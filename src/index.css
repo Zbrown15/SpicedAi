@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Critical CSS for above-the-fold content */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-display: swap;
+  }
+}
+
+@layer base {
+  :root {
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --primary-foreground: 222.2 84% 4.9%;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-white font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+  }
+  
+  /* Hide the Vapi floating button */
+  #vapi-support-btn {
+    display: none !important;
+  }
+  
+  /* Optimize font loading */
+  .font-display {
+    font-display: swap;
+  }
+  
+  .font-body {
+    font-display: swap;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200 inline-flex items-center gap-2;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-background hover:bg-primary-hover shadow-[0_0_20px_rgba(0,255,157,0.3)];
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary/85 text-primary hover:bg-primary/10;
+  }
+  
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .card {
+    @apply bg-white/5 backdrop-blur-lg rounded-xl p-6 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:shadow-[0_0_15px_rgba(0,255,157,0.3)] hover:-translate-y-1;
+  }
+
+  .feature-card {
+    @apply flex flex-col items-center justify-center p-4 rounded-lg bg-white/5 backdrop-blur-lg
+           hover:bg-white/10 transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,255,157,0.2)];
+  }
+}
+
+.gradient-overlay {
+  background: linear-gradient(135deg, rgba(0,255,157,0.1) 0%, rgba(0,255,157,0.05) 100%);
+}
+
+.pattern-grid {
+  background-image: linear-gradient(rgba(0, 255, 157, 0.15) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 255, 157, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Add animations needed for shine border */
+@keyframes shine {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.animate-shine {
+  animation: shine var(--duration, 14s) linear infinite;
+}
+
+.bg-shine-size {
+  background-size: 300% 300%;
+}
+
+/* Voice call animations */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+.pulse-ring {
+  animation: pulse-ring 3s ease-out infinite;
+}
+
+@keyframes wave-animation {
+  0% { height: 10px; }
+  50% { height: 25px; }
+  100% { height: 10px; }
+}
+
+.wave-bar {
+  width: 3px;
+  background-color: #00FF9D;
+  border-radius: 3px;
+  margin: 0 1px;
+}
+
+/* Video Background Optimizations */
+@media (max-width: 768px) {
+  video {
+    /* Ensure video covers mobile screens properly */
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
+
+/* Improve video loading performance */
+video {
+  /* Hardware acceleration for smooth playback */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Fallback for browsers that don't support video */
+@supports not (object-fit: cover) {
+  video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+  }
+}

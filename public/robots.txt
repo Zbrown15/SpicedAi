@@ -1,0 +1,58 @@
+# Robots.txt for Spiced AI
+# https://spicedai.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Disallow admin and internal pages
+Disallow: /admin/
+Disallow: /api/
+Disallow: /.env
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /dist/
+Disallow: /*.json$
+Disallow: /temp/
+Disallow: /test/
+
+# Allow important directories and pages
+Allow: /services/
+Allow: /contact
+Allow: /privacy
+Allow: /terms
+Allow: /booking-success
+
+# Crawl delay (helps prevent server overload)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://spicedai.com/sitemap.xml
+
+# Additional sitemaps (for future use)
+# Sitemap: https://spicedai.com/sitemap-images.xml
+# Sitemap: https://spicedai.com/sitemap-news.xml
+
+# Host directive (helps with canonicalization)
+Host: https://spicedai.com
